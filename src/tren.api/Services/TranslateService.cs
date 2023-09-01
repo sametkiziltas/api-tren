@@ -15,7 +15,7 @@ public class TranslateService : ITranslateService
     
     public async Task<List<ResponseTranslate>> SearchAsync(string text, string language)
     {
-        var words = await _wordRepository.SearchAsync(text, language);
+        var words = await _wordRepository.SearchAsync(text.ToLower(), language);
         
         var result = words.Select(x => new ResponseTranslate()
         {
