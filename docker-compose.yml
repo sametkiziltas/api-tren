@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+  web:
+    container_name: 'container-tren.api'
+    image: 'image-tren.api'
+    build:
+      context: .
+      dockerfile: dockerfile
+    ports:
+     - "5001:80"
+    depends_on:
+     - "postgres"
+    networks:
+      - tren.api-network
+
+  postgres:
+    container_name: 'postgres'
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: admin
+    networks:
+      - tren.api-network
+    ports:
+       - "5433:5432"
+
+networks:
+  tren.api-network:
+    driver: bridge
