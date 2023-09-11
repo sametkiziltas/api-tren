@@ -17,7 +17,7 @@ builder.Services.AddRateLimiter(options =>
                 new FixedWindowRateLimiterOptions
                 {
                     AutoReplenishment = true,
-                    PermitLimit = 10,
+                    PermitLimit = 30,
                     Window = TimeSpan.FromMinutes(1)//10 request per minute
                 })),
         PartitionedRateLimiter.Create<HttpContext, string>(httpContext =>
