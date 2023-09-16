@@ -1,4 +1,4 @@
-namespace tren.api.Api.Models.Responses;
+namespace tren.api.Models.Responses;
 
 public class ResponseTranslate
 {
