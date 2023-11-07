@@ -95,10 +95,26 @@ theatre";
                 break;
         }
         
-        
         return result;
     }
 
+    public async Task<List<Word>> SuggestAsync(string text, string language) 
+    {
+        var result = new List<Word>();
+
+        switch (language)
+        {
+            case "tr":
+                result = await _context.Words.Where(w => w.Turkish.StartsWith(text)).DistinctBy(x => x.Turkish).OrderBy(q => q.Turkish).Take(10).ToListAsync();
+                break;
+            case "en":
+                result = await _context.Words.Where(w => w.English.StartsWith(text)).DistinctBy(x => x.English).OrderBy(q => q.English).Take(10).ToListAsync();
+                break;
+        }
+
+        return result;
+    }
+    
     public async Task<Word> InsertAsync(Word entity)
     {
         await _context.AddAsync(entity);
