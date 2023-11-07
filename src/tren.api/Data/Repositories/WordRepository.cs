@@ -80,10 +80,18 @@ theatre";
         switch (language)
         {
             case "tr":
-                result = await _context.Words.Where(x => x.Turkish.Equals(text)).OrderBy(y=> y.Category).ThenBy(z=> z.Turkish).ThenBy(w=> w.English).ToListAsync();
+                result = await _context.Words.Where(x => x.Turkish.Equals(text))
+                .OrderBy(y=> y.Category)
+                .ThenBy(z=> z.Turkish)
+                .ThenBy(w=> w.English)
+                .ToListAsync();
                 break;
             case "en":
-                result = await _context.Words.Where(x => x.English.Equals(text)).OrderBy(y=> y.Category).ThenBy(z=> z.English).ThenBy(w=> w.Turkish).ToListAsync();
+                result = await _context.Words.Where(x => x.English.Equals(text))
+                .OrderBy(y=> y.Category)
+                .ThenBy(z=> z.English)
+                .ThenBy(w=> w.Turkish)
+                .ToListAsync();
                 break;
         }
         
